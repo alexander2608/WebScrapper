@@ -14,7 +14,7 @@ Project Setup
 	npm install 
 
 Project Run
-	npm run dev 
+	npm run dev
 	or
 	serve -s dist
 	

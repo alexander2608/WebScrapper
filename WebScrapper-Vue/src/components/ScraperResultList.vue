@@ -1,10 +1,11 @@
 <template>
   <form>
       <h1> Result </h1>
+      <h3 class="result" v-if="positionArray.length>0">{{positionArray}}</h3>
       <li v-for="webScraperResult in GetWebScraperResultResponse.webScraperResultList" :key="webScraperResult.position" class="result">
           <span v-bind:class="{'match' : webScraperResult.isMatch == true}">{{webScraperResult.position}} - {{webScraperResult.address}}</span>
       </li>
-      <h3 v-if="GetWebScraperResultResponse.isSuccess === false">{{GetWebScraperResultResponse.message}}</h3>
+      <h3 class="result" v-if="GetWebScraperResultResponse.isSuccess === false">{{GetWebScraperResultResponse.message}}</h3>
   </form>
 </template>
 
@@ -13,12 +14,26 @@
     export default{
         data(){
             return{
-                
+                positionArray:[]
             }
         },
         computed:{
             GetWebScraperResultResponse(){
-                return this.$store.getters.GetWebScraperResultResponse;
+                var response = this.$store.getters.GetWebScraperResultResponse;
+                this.updatePositionString(response);
+                return response;
+            }
+        },
+        methods:{
+            updatePositionString(response){
+                if (response.webScraperResultList != null){
+                    this.positionArray = []
+                    response.webScraperResultList.forEach(webScraperResult => {
+                        if(webScraperResult.isMatch == true){
+                            this.positionArray.push(webScraperResult.position);
+                        }
+                    });
+                }
             }
         }
     }
