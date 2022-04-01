@@ -1,9 +1,10 @@
 ## WebScrapper
 How to use:
 1. Run the server and client program
-2. Input Phrase and URL
-3. Press "Submit" button
-4. The result will be showed and the matched result will be highlighted.
+2. Open a browser and connect to http://localhost:3000/
+3. Input the phrase and the URL
+4. Press "Submit" button
+5. The result will be showed and the matched result will be highlighted.
  
 ## Server - WebScrapper-Api
 Run Project:
@@ -11,12 +12,14 @@ Run Project:
 
 ## Client - WebScrapper-Vue
 Project Setup
-	npm install 
+```sh
+	npm install
+```
 
-Project Run
-	npm run dev
-	or
+Run Project:
+```sh
 	serve -s dist
+```
 	
 Config: 
 Server url and port can be adjusted at
